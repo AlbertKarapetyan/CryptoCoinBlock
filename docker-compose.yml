@@ -1,0 +1,83 @@
+services:
+    # Runs Tests Before Deployment
+    test-runner:
+        image: mcr.microsoft.com/dotnet/sdk:8.0
+        container_name: test-runner
+        working_dir: /app
+        volumes:
+            - .:/app
+        command: >
+            sh -c "dotnet restore CryptoCoinBlock.sln &&
+                   dotnet test CM.Domain.Tests/CM.Domain.Tests.csproj --configuration Release --no-restore &&
+                   dotnet test CM.API.Tests/CM.API.Tests.csproj --configuration Release --no-restore"
+        networks:
+            - ccb_network
+
+    # PostgreSQL Database
+    ccb-postgresql:
+        image: postgres:latest
+        container_name: ccb-postgresql
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: Ak.123456Qw
+            POSTGRES_DB: ccb
+        ports:
+            - "5433:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - ccb_network
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+
+    # Apply Migrations Before Running the App
+    db-migrator:
+        image: mcr.microsoft.com/dotnet/sdk:8.0
+        container_name: db-migrator
+        depends_on:
+            ccb-postgresql:
+                condition: service_healthy
+        volumes:
+            - .:/app
+        working_dir: /app
+        environment:
+            ConnectionStrings__DefaultConnection: "Host=ccb-postgresql;Port=5432;Database=ccb;Username=postgres;Password=Ak.123456Qw"
+            ASPNETCORE_ENVIRONMENT: Production
+        command: >
+             bash -c "unset PATH &&
+             export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.dotnet/tools' &&
+             dotnet --info &&
+             dotnet tool install --global dotnet-ef &&
+             dotnet restore CryptoCoinBlock.sln &&
+             dotnet ef database update --project CM.Data.Migrations/CM.Data.Migrations.csproj --startup-project CryptoCoinBlock/CryptoCoinBlock.csproj"
+        
+        networks:
+            - ccb_network
+
+    # Main Application
+    crypto-coins-blocks:
+        image: crypto-coins-blocks
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: coins-blocks
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Production
+            - ConnectionStrings__DefaultConnection=Host=ccb-postgresql;Port=5432;Database=ccb;Username=postgres;Password=Ak.123456Qw
+        ports:
+            - "5000:5000"
+        depends_on:
+            - test-runner
+            - db-migrator
+        networks:
+            - ccb_network
+
+networks:
+  ccb_network:
+    driver: bridge
+
+volumes:
+    postgres_data:
