@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "4ce6e3a4-c2b3-4bf4-b3c7-1441b8a16150",
+		"name": "CryptoCoinBlock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3757964"
+	},
+	"item": [
+		{
+			"name": "AllCoins/Import",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/AllCoins/Import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"AllCoins",
+						"Import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bitcoin/Import",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/Bitcoin/Import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"Bitcoin",
+						"Import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bitcoin/Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/Bitcoin/Get?isTest=false&limit=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"Bitcoin",
+						"Get"
+					],
+					"query": [
+						{
+							"key": "isTest",
+							"value": "false"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dashcoin/Import",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/Dashcoin/Import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"Dashcoin",
+						"Import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dashcoin/Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/Dashcoin/Get?isTest=false&limit=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"Dashcoin",
+						"Get"
+					],
+					"query": [
+						{
+							"key": "isTest",
+							"value": "false"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ethereum/Import",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/Dashcoin/Import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"Dashcoin",
+						"Import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ethereum/Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IsTest\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5068/api/Ethereum/Get?isTest=false&limit=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5068",
+					"path": [
+						"api",
+						"Ethereum",
+						"Get"
+					],
+					"query": [
+						{
+							"key": "isTest",
+							"value": "false"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
