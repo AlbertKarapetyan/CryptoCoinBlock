@@ -33,6 +33,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{780AE623
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.API.Tests", "CM.API.Tests\CM.API.Tests.csproj", "{6982C954-90E6-4B2A-BC13-F6DC47BD03AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{23B9F8AD-ECB1-4722-A267-D7C9470793ED}"
+	ProjectSection(SolutionItems) = preProject
+		CM.APIGateway.postman_collection.json = CM.APIGateway.postman_collection.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.ApiGateway", "CM.ApiGateway\CM.ApiGateway.csproj", "{F5419949-3F93-47C2-BD8C-F625B38C4339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +82,10 @@ Global
 		{6982C954-90E6-4B2A-BC13-F6DC47BD03AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6982C954-90E6-4B2A-BC13-F6DC47BD03AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6982C954-90E6-4B2A-BC13-F6DC47BD03AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5419949-3F93-47C2-BD8C-F625B38C4339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5419949-3F93-47C2-BD8C-F625B38C4339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5419949-3F93-47C2-BD8C-F625B38C4339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5419949-3F93-47C2-BD8C-F625B38C4339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,5 +100,6 @@ Global
 		{A25E93CA-9438-4B6E-9993-5CD8C3800765} = {08C8E357-4891-4E84-8B77-6599C07F037E}
 		{B00FE3AC-6186-4274-99CE-0487C080FF29} = {780AE623-6BC1-4087-8C2D-810CD366388D}
 		{6982C954-90E6-4B2A-BC13-F6DC47BD03AD} = {780AE623-6BC1-4087-8C2D-810CD366388D}
+		{F5419949-3F93-47C2-BD8C-F625B38C4339} = {23B9F8AD-ECB1-4722-A267-D7C9470793ED}
 	EndGlobalSection
 EndGlobal

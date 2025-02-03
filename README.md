@@ -13,6 +13,7 @@ CryptoCoinBlock is a scalable cryptocurrency data management system designed to 
 - **Async Import Endpoint:** A single unified endpoint allows importing of blocks asynchronously for all supported coins.
 - **Rate Limiting Middleware:** Middleware is included to enforce rate limits on API requests, ensuring fair usage and protecting the service from abuse.
 - **Data Transfer Objects (DTOs) and AutoMapper:** Simplifies data mapping between layers using DTOs for clean data structures and AutoMapper to streamline transformations.
+- **API Gateway Support:** CM.APIGateway enables unified access to different cryptocurrency services through a single entry point, providing routing and transformation capabilities.
 
 ## Architecture Overview
 
@@ -21,6 +22,7 @@ CryptoCoinBlock is a scalable cryptocurrency data management system designed to 
 - **Domain Layer:** Manages core business logic and domain rules.
 - **Infrastructure Layer:** Provides integration with data storage and third-party services.
 - **DTO Project:** A dedicated project to define clean data structures used to transfer information between layers, ensuring separation of concerns and consistent data models.
+- **API Gateway (CM.APIGateway):** Provides centralized routing for all API requests to backend services, simplifying access and management.
 
 ### Design Patterns Used
 
@@ -29,6 +31,7 @@ CryptoCoinBlock is a scalable cryptocurrency data management system designed to 
 - **Mediator Pattern:** Manages communication between handlers using MediatR.
 - **Domain-Driven Design (DDD):** Encapsulates business logic in domain models.
 - **Data Mapping with AutoMapper:** Streamlines object-to-object mapping to avoid boilerplate code.
+- **API Gateway Pattern:** Centralized entry point for managing requests to backend services.
 
 ## Getting Started
 
@@ -66,6 +69,26 @@ To execute unit tests:
 ```bash
    dotnet test
 ```
+
+## API Gateway (CM.APIGateway)
+
+CM.APIGateway serves as a centralized entry point to interact with multiple cryptocurrency APIs, simplifying requests and ensuring efficient routing.
+
+### API Gateway Configuration
+
+- **Routing:**
+  - `POST /api/{coin}/Import` -> Maps to `{coin}/Import`
+  - `GET /api/{coin}/Get` -> Maps to `{coin}/GetHistory`
+- **Host and Ports:** Requests are forwarded to `localhost:...`.
+- **Header Transformations:** Ensures proper content-type settings for JSON-based requests.
+- **Global Configuration:**
+  - `RequestIdKey`: Tracks API requests.
+  - `BaseUrl`: `http://localhost:...`
+- **Ocelot Configuration:** API Gateway is built using **Ocelot**, with settings stored in `ocelot.json`. The configuration includes automatic reloading (`"AutoReload": true`), allowing real-time updates without restarting the gateway service.
+	
+### Testing API Gateway
+
+A Postman collection (`CM.APIGateway.postman_collection.json`) is provided to facilitate API testing through the gateway.
 
 ## Docker Instructions
 
@@ -158,6 +181,7 @@ app.UseMiddleware<RateLimitingMiddleware>();
 ## Project Structure
 
 ```
+CM.APIGateway            # Centralized entry point
 CryptoCoinBlock
 ├── CM.API               # API Layer
 ├── CM.Application       # Application Layer (Commands, Queries)

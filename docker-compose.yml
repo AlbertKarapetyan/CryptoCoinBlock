@@ -75,6 +75,20 @@ services:
         networks:
             - ccb_network
 
+    # API Gateway Application
+    api-gateway:
+        image: api-gateway
+        build:
+            context: ./CM.ApiGateway
+            dockerfile: Dockerfile
+        container_name: api-gateway
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Production
+        ports:
+            - "5001:5001"
+        networks:
+            - ccb_network
+
 networks:
   ccb_network:
     driver: bridge

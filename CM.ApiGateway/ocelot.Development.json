@@ -1,0 +1,35 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/{coin}/Import",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/{coin}/Import",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5055
+        }
+      ],
+      "DownstreamHeaderTransform": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/{coin}/Get",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/{coin}/GetHistory",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5055
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "BaseUrl": "http://localhost:5068"
+  }
+}
