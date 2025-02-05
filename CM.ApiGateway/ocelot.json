@@ -8,7 +8,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "coins-blocks",
-          "Port": 5000
+          "Port": 5555
         }
       ],
       "DownstreamHeaderTransform": {
@@ -23,13 +23,25 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "coins-blocks",
-          "Port": 5000
+          "Port": 5555
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api-health",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/health",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "coins-blocks",
+          "Port": 5555
         }
       ]
     }
   ],
   "GlobalConfiguration": {
     "RequestIdKey": "OcRequestId",
-    "BaseUrl": "http://localhost:5001"
+    "BaseUrl": "http://localhost:5550"
   }
 }

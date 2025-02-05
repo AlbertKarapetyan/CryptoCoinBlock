@@ -17,5 +17,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
-EXPOSE 5001
+EXPOSE 5550
 ENTRYPOINT ["dotnet", "CM.ApiGateway.dll"]

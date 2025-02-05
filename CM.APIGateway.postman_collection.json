@@ -21,12 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/AllCoins/Import",
+					"raw": "http://localhost:5555/api/AllCoins/Import",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"AllCoins",
@@ -51,12 +51,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/Bitcoin/Import",
+					"raw": "http://localhost:5555/api/Bitcoin/Import",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"Bitcoin",
@@ -84,12 +84,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/Bitcoin/Get?isTest=false&limit=100",
+					"raw": "http://localhost:5555/api/Bitcoin/Get?isTest=false&limit=100",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"Bitcoin",
@@ -124,12 +124,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/Dashcoin/Import",
+					"raw": "http://localhost:5555/api/Dashcoin/Import",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"Dashcoin",
@@ -157,12 +157,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/Dashcoin/Get?isTest=false&limit=100",
+					"raw": "http://localhost:5555/api/Dashcoin/Get?isTest=false&limit=100",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"Dashcoin",
@@ -197,12 +197,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/Dashcoin/Import",
+					"raw": "http://localhost:5555/api/Dashcoin/Import",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"Dashcoin",
@@ -230,12 +230,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5068/api/Ethereum/Get?isTest=false&limit=100",
+					"raw": "http://localhost:5555/api/Ethereum/Get?isTest=false&limit=100",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5068",
+					"port": "5555",
 					"path": [
 						"api",
 						"Ethereum",

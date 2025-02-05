@@ -26,6 +26,18 @@
           "Port": 5055
         }
       ]
+    },
+    {
+      "UpstreamPathTemplate": "/health",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/health",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5055
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {

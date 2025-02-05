@@ -1,3 +1,4 @@
+using CM.ApiGateway.Logging;
 using CM.ApiGateway.Middleware;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -20,6 +21,9 @@ builder.Configuration
     .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
+// Configure Serilog for ELK logging using custom configuration class
+LoggingConfiguration.ConfigureSerilog(builder);
+
 builder.Services.AddLogging();
 
 var app = builder.Build();
@@ -30,6 +34,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseMiddleware<CoinValidationMiddleware>();
 
 app.UseOcelot().Wait();
