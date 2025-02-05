@@ -57,6 +57,36 @@ services:
         networks:
             - ccb_network
 
+    # ELK Stack
+    ccb-elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:sha256-fff57a996ea17bad3163108f6f3221c7f5a43cac20bffea5082c49eb4d7950e5
+        container_name: ccb-elasticsearch
+        environment:
+          discovery.type: single-node
+          ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+          xpack.security.enabled: false
+        ports:
+          - "9201:9200"
+        networks:
+          - ccb_network
+        volumes:
+          - es_data:/usr/share/elasticsearch/data
+    
+    # Grafana Service
+    ccb-grafana:
+        image: grafana/grafana:latest
+        container_name: ccb-grafana
+        ports:
+          - "30000:3000"
+        networks:
+          - ccb_network
+        depends_on:
+          - ccb-elasticsearch
+        volumes:
+          - grafana_data:/var/lib/grafana
+        environment:
+          GF_SECURITY_ADMIN_PASSWORD: "adm#123456"  # Optional: Set the admin password if needed
+
     # Main Application
     crypto-coins-blocks:
         image: crypto-coins-blocks
@@ -68,26 +98,34 @@ services:
             - ASPNETCORE_ENVIRONMENT=Production
             - ConnectionStrings__DefaultConnection=Host=ccb-postgresql;Port=5432;Database=ccb;Username=postgres;Password=Ak.123456Qw
         ports:
-            - "5000:5000"
+            - "5555:5555"
         depends_on:
             - test-runner
             - db-migrator
         networks:
             - ccb_network
+        healthcheck:
+          test: ["CMD", "echo", "OK"] 
+          interval: 10s
+          timeout: 5s
+          retries: 5
 
     # API Gateway Application
-    api-gateway:
+    ccb-api-gateway:
         image: api-gateway
         build:
             context: ./CM.ApiGateway
             dockerfile: Dockerfile
-        container_name: api-gateway
+        container_name: ccb-api-gateway
         environment:
             - ASPNETCORE_ENVIRONMENT=Production
         ports:
-            - "5001:5001"
+            - "5550:5550"
         networks:
             - ccb_network
+        depends_on:
+            crypto-coins-blocks:
+                condition: service_healthy
 
 networks:
   ccb_network:
@@ -95,3 +133,5 @@ networks:
 
 volumes:
     postgres_data:
+    es_data:    
+    grafana_data:
